@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" type="text/css" href="scss/main_style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="center_area">
+            <div class="key" data-key="65">A</div>
+        <div class="key" data-key="83">S</div>
+        <div class="key" data-key="68">D</div>
+        <div class="key" data-key="70">F</div>
+        <div class="key" data-key="71">G</div>
+        <div class="key" data-key="72">H</div>
+        <div class="key" data-key="74">J</div>
+        </div>
+    </div>
+
+    <!-- 音效 -->
+    <audio data-key="65" src="./asset/audio/guitar1.mp3"></audio>
+    <audio data-key="83" src="./asset/audio/guitar2.mp3"></audio>
+    <audio data-key="68" src="./asset/audio/guitar3.mp3"></audio>
+    <audio data-key="70" src="./asset/audio/guitar4.mp3"></audio>
+    <audio data-key="71" src="./asset/audio/guitar5.mp3"></audio>
+    <audio data-key="72" src="./asset/audio/guitar6.mp3"></audio>
+    <audio data-key="74" src="./asset/audio/guitar7.mp3"></audio>
+
+    <script>
+        function playAudio (e) {
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            if(!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+            key.classList.add('playing');
+        }
+
+        function removePlaying (e) {
+            if(e.propertyName != 'transform') return;
+                e.target.classList.remove('playing');
+        }
+    
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => {
+            key.addEventListener('transitionend', removePlaying);
+        });
+        window.addEventListener('keydown', playAudio);
+    </script>
+</body>
+</html>

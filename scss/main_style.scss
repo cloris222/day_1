@@ -1,0 +1,51 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+
+    .container{
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-image: 
+        linear-gradient(
+            rgba(0,0,0,0.5), rgba(0,0,0,0.5),),
+            url(../asset/img/img_bg.jpg);
+
+        .center_area{
+            width: 80%;
+            margin: auto;
+            display: flex; // flex容器
+            flex-direction: row;  // flex方向
+            justify-content: space-between;  // 主方向排版方式
+            align-items: center;  // 副方向排版方式
+        }
+
+
+        .key {
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            font-size: 40px;
+            font-weight: 700;
+            color: lightgray;
+            border: 2px solid lightgray;
+            text-align: center;
+            line-height: 100px;
+            transition: all 0.3s;
+        }
+
+        .playing {
+            transform: scale(1.2);
+            border: 3px solid goldenrod;
+        }
+    }
+
+}
